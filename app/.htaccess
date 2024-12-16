@@ -1,1 +1,8 @@
-Deny From All
+# public/.htaccess
+Options +FollowSymLinks -Indexes
+
+RewriteEngine On
+
+# Exemples de rewriting
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteRule ^(.*)$ index.php [QSA,L]

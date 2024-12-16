@@ -1,48 +1,31 @@
 <?php
-
-// Retenir son utilisation  => Database::getPDO()
-// Design Pattern : Singleton
-/**
- * Classe qui va nous permettre de nous connecter à notre base de données = oshop
- */
+// app/Utils/Database.php
 namespace App\Utils;
 
 use PDO;
+use PDOException;
 
 class Database
 {
-    /** @var PDO */
-    private $dbh;
-    private static $_instance;
-    private function __construct()
-    {
-        // Récupération des données du fichier de config
-        // la fonction parse_ini_file parse le fichier et retourne un array associatif
-        $configData = parse_ini_file(__DIR__ . '/../config.ini');
+    private static $dbh;
 
-        try {
-            $this->dbh = new PDO(
-                "mysql:host={$configData['DB_HOST']};dbname={$configData['DB_NAME']};charset=utf8",
-                $configData['DB_USERNAME'],
-                $configData['DB_PASSWORD'],
-                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING) // Affiche les erreurs SQL à l'écran
-            );
-        } catch (\Exception $exception) {
-            echo 'Erreur de connexion...<br>';
-            echo $exception->getMessage() . '<br>';
-            echo '<pre>';
-            echo $exception->getTraceAsString();
-            echo '</pre>';
-            exit;
-        }
-    }
-    // the unique method you need to use
     public static function getPDO()
     {
-        // If no instance => create one
-        if (empty(self::$_instance)) {
-            self::$_instance = new Database();
+        if (empty(self::$dbh)) {
+            // Lecture du fichier config.ini
+            $config = parse_ini_file(__DIR__ . '/../config.ini');
+
+            $dsn = 'mysql:host='.$config['DB_HOST'].';dbname='.$config['DB_NAME'].';charset=utf8';
+            $user = $config['DB_USER'];
+            $pass = $config['DB_PASS'];
+
+            try {
+                self::$dbh = new PDO($dsn, $user, $pass);
+                self::$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (PDOException $exception) {
+                die('Erreur de connexion : ' . $exception->getMessage());
+            }
         }
-        return self::$_instance->dbh;
+        return self::$dbh;
     }
 }
