@@ -16,13 +16,12 @@
         </div>
         <nav class="main-nav">
             <ul>
-                <li><a href="?route=home">Accueil</a></li>
-                <li><a href="?route=catalog-category">Catégories</a></li>
-                <li><a href="?route=catalog-type">Types de produits</a></li>
-                <li><a href="?route=catalog-brand">Marques</a></li>
-                <!-- Autres liens... -->
+                <!-- On utilise ?controller=... & method=... -->
+                <li><a href="?controller=main&method=home">Accueil</a></li>
+                <li><a href="?controller=catalog&method=category">Catégories</a></li>
+                <li><a href="?controller=catalog&method=type">Types de produits</a></li>
+                <li><a href="?controller=catalog&method=brand">Marques</a></li>
             </ul>
         </nav>
     </header>
-
     <main>
