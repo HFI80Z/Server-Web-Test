@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Dans les "Fournitures" - oShop</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
     <header>

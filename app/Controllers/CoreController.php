@@ -13,12 +13,12 @@ abstract class CoreController
         extract($viewData);
 
         // Inclusion du header
-        require __DIR__ . '/../Views/partials/header.tpl.php';
+        require __DIR__ . '/../views/partials/header.tpl.php';
 
         // Inclusion de la vue principale
-        require __DIR__ . '/../Views/' . $viewName . '.tpl.php';
+        require __DIR__ . '/../views/' . $viewName . '.tpl.php';
 
         // Inclusion du footer
-        require __DIR__ . '/../Views/partials/footer.tpl.php';
+        require __DIR__ . '/../views/partials/footer.tpl.php';
     }
 }

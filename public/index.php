@@ -1,60 +1,36 @@
 <?php
 // public/index.php
 
-// On active le rapport d'erreurs pour le développement (à désactiver en production)
-error_reporting(E_ALL);
 ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-// Chargement de l'autoload de Composer (si tu veux des librairies externes)
-require_once __DIR__ . '/../vendor/autoload.php';
 
-// Chargement manuel des classes de notre application (simple SPL autoload)
-spl_autoload_register(function($className) {
-    // Exemple : $className = "App\\Controllers\\MainController"
-    // On convertit en chemin de fichier
-    $file = __DIR__ . '/../' . str_replace('\\', '/', $className) . '.php';
-    if (file_exists($file)) {
-        require_once $file;
-    }
-});
+require_once __DIR__ . '/../autoload.php';  // charge vendor/autoload.php
 
-// On peut récupérer la "route" via l'URL (ex: index.php?route=home)
-$route = $_GET['route'] ?? 'home';
-
-// On instancie nos contrôleurs :
 use App\Controllers\MainController;
 use App\Controllers\CatalogController;
 
-// Router basique
-switch($route) {
-    case 'home':
-        $controller = new MainController();
-        $controller->home();
-        break;
+// On récupère l'URL demandée pour savoir quel contrôleur appeler
+// Ex: http://localhost:8888/?controller=main&method=home
+$controllerName = filter_input(INPUT_GET, 'controller') ?? 'main';
+$methodName     = filter_input(INPUT_GET, 'method') ?? 'home';
 
-    case 'catalog-category':
-        $controller = new CatalogController();
-        $controller->category();
-        break;
+$controllerName = ucfirst(strtolower($controllerName)) . 'Controller'; 
+// ex: 'MainController'
+$fullyQualifiedControllerName = "App\\Controllers\\{$controllerName}";
 
-    case 'catalog-brand':
-        $controller = new CatalogController();
-        $controller->brand();
-        break;
-
-    case 'catalog-product':
-        $controller = new CatalogController();
-        $controller->product();
-        break;
-        
-    case 'catalog-type':
-        $controller = new CatalogController();
-        $controller->type();
-        break;
-
-    default:
-        // Page 404 ou redirection
+// Vérification que la classe existe
+if (class_exists($fullyQualifiedControllerName)) {
+    $controller = new $fullyQualifiedControllerName();
+    // Vérifier que la méthode existe
+    if (method_exists($controller, $methodName)) {
+        $controller->$methodName();
+    } else {
         http_response_code(404);
-        echo "Page non trouvée.";
-        break;
+        echo "Méthode inconnue : $methodName";
+    }
+} else {
+    http_response_code(404);
+    echo "Contrôleur inconnu : $controllerName";
 }
