@@ -1,26 +1,42 @@
 <?php
 // app/Views/cart.tpl.php
 ?>
-<section class="cart-page">
-    <h1><span class="cart-icon">🛒</span> Mon Panier</h1>
+<h1><i class="cart-icon">🛒</i> Mon Panier</h1>
 
-    <?php 
-    // Ici, on compte le nombre d'articles
-    $itemCount = count($cartItems);
-    ?>
-    <p><?= $itemCount; ?> article<?= ($itemCount>1) ? 's' : ''; ?></p>
-
-    <?php if ($itemCount === 0): ?>
-        <p>Votre panier est vide.</p>
-        <p><a href="?controller=catalog&method=category">Cliquez ici pour continuer vos achats.</a></p>
-    <?php else: ?>
-        <!-- Liste des produits du panier -->
-        <ul>
-            <?php foreach($cartItems as $item): ?>
-                <li><?= htmlspecialchars($item->getName()); ?> - <?= htmlspecialchars($item->getPrice()); ?> €</li>
+<?php if (empty($cartItems)): ?>
+    <p>Votre panier est vide.</p>
+    <a href="?controller=type&method=list" class="continue-shopping-button">Cliquez ici pour continuer vos achats.</a>
+<?php else: ?>
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix unitaire</th>
+                <th>Quantité</th>
+                <th>Sous-total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            $total = 0; 
+            foreach ($cartItems as $item): 
+                $subtotal = $item['price'] * $item['quantity'];
+                $total += $subtotal;
+            ?>
+                <tr>
+                    <td><?= htmlspecialchars($item['name']); ?></td>
+                    <td><?= number_format($item['price'], 2); ?> €</td>
+                    <td><?= $item['quantity']; ?></td>
+                    <td><?= number_format($subtotal, 2); ?> €</td>
+                </tr>
             <?php endforeach; ?>
-        </ul>
-        <p>Total : XX €</p>
-        <button>Valider mon panier</button>
-    <?php endif; ?>
-</section>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3"><strong>Total :</strong></td>
+                <td><strong><?= number_format($total, 2); ?> €</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+    <a href="?controller=cart&method=clear" class="clear-cart-button">Vider le panier</a>
+<?php endif; ?>

@@ -1,35 +1,33 @@
 <?php
 // public/index.php
 
-// 1) ACTIVER L'AFFICHAGE DES ERREURS
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+session_start();
 
-// 2) CHARGER L'AUTLOAD
-require_once __DIR__ . '/../vendor/autoload.php'; 
+require_once '../vendor/autoload.php';
 
-// 3) NAMESPACES
-use App\Controllers\MainController;
-use App\Controllers\CatalogController;
+use App\Controllers\CoreController;
 
-// 4) ROUTING
-$controllerName = filter_input(INPUT_GET, 'controller') ?? 'main';
-$methodName = filter_input(INPUT_GET, 'method') ?? 'home';
+// Récupérer les paramètres GET
+$controllerName = ucfirst(strtolower($_GET['controller'] ?? 'main')) . 'Controller';
+$methodName = strtolower($_GET['method'] ?? 'home');
 
-$controllerName = ucfirst(strtolower($controllerName)) . 'Controller';
-$fullyQualifiedControllerName = 'App\\Controllers\\' . $controllerName;
+// Construire le nom complet du namespace
+$controllerClass = 'App\\Controllers\\' . $controllerName;
 
-if (class_exists($fullyQualifiedControllerName)) {
-    $controller = new $fullyQualifiedControllerName();
+// Vérifier si la classe existe
+if (class_exists($controllerClass)) {
+    $controller = new $controllerClass();
 
+    // Vérifier si la méthode existe
     if (method_exists($controller, $methodName)) {
         $controller->$methodName();
     } else {
+        // Méthode introuvable
         http_response_code(404);
-        echo "Erreur 404 : La méthode '$methodName' n'existe pas dans $controllerName.";
+        echo "Erreur 404 : La méthode '$methodName' n'existe pas dans le contrôleur '$controllerName'.";
     }
 } else {
+    // Contrôleur introuvable
     http_response_code(404);
     echo "Erreur 404 : Le contrôleur '$controllerName' est introuvable.";
 }

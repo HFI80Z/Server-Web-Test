@@ -19,14 +19,6 @@
             <img src="/assets/images/logo2.jpeg" alt="Logo BIC">
         </div>
 
-        <!-- Barre de recherche -->
-        <div class="search-bar">
-            <form action="#" method="get">
-                <input type="text" name="q" placeholder="Chercher">
-                <button type="submit">🔍</button>
-            </form>
-        </div>
-
         <!-- Liens compte & panier -->
         <div class="header-actions">
             <!-- Renvoie vers UserController::login() -->
@@ -41,7 +33,7 @@
         <ul>
             <li><a href="?controller=main&method=home">Accueil</a></li>
             <li><a href="?controller=catalog&method=category">Catégories</a></li>
-            <li><a href="?controller=catalog&method=type">Types de produits</a></li>
+            <li><a href="?controller=catalog&method=type">Produits</a></li>
             <li><a href="?controller=catalog&method=brand">Marques</a></li>
         </ul>
     </nav>

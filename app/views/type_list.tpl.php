@@ -1,5 +1,5 @@
 <?php
-// app/Views/type.tpl.php
+// app/Views/type_list.tpl.php
 ?>
 <h2>Nos produits</h2>
 
