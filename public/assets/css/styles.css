@@ -1,6 +1,25 @@
-/* public/assets/css/style.css */
+/* ------------------------------------------------------------------
+   0. STICKY FOOTER
+------------------------------------------------------------------ */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
-/* Reset simple */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto; /* Permet de pousser le footer en bas si peu de contenu */
+}
+
+/* ------------------------------------------------------------------
+   1. RESET ET STYLE GLOBAL
+------------------------------------------------------------------ */
 * {
   margin: 0;
   padding: 0;
@@ -9,75 +28,274 @@
 
 body {
   font-family: Arial, sans-serif;
+  background-color: #fafafa;
   color: #333;
 }
 
-header {
-  background: #FAD02C;
-  padding: 20px;
-  text-align: center;
+/* Icônes basiques (ex: 🛒 / 👤) */
+.cart-icon,
+.user-icon {
+  margin-right: 0.5rem;
 }
 
-header h1 {
-  font-size: 2em;
-  margin-bottom: 5px;
+/* ------------------------------------------------------------------
+   2. HEADER (LOGO, RECHERCHE, COMPTE, PANIER)
+------------------------------------------------------------------ */
+.site-header {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
 }
 
-header .slogan {
-  font-size: 1em;
-  color: #555;
+/* Barre du haut (logo, recherche, compte, panier) */
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
 }
 
+.logo img {
+  max-height: 50px;
+}
+
+/* Barre de recherche */
+.search-bar form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.search-bar input[type="text"] {
+  padding: 0.3rem;
+  min-width: 200px;
+}
+.search-bar button {
+  background: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+}
+
+/* Liens compte/panier */
+.header-actions a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+/* ------------------------------------------------------------------
+   3. NAVIGATION PRINCIPALE
+------------------------------------------------------------------ */
+.main-nav {
+  background-color: #ffe600; /* Jaune Bic */
+  padding: 0.5rem 1rem;
+  display: flex;
+}
 .main-nav ul {
   display: flex;
-  justify-content: center;
-  gap: 20px;
   list-style: none;
-  margin-top: 10px;
+  gap: 1rem;
+  margin: 0 auto;
 }
-
 .main-nav a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
 }
 
-main {
-  padding: 20px;
-  min-height: 60vh;
+/* ------------------------------------------------------------------
+   4. PAGE D'ACCUEIL : BANNIÈRE + CARTES
+------------------------------------------------------------------ */
+/* Bannière haute (titre, phrase d'accueil) */
+.home-banner {
+  text-align: center;
+  background-color: #ffe600;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+.home-banner h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+.home-banner p {
+  font-size: 1.1rem;
 }
 
-footer {
-  background: #333;
+/* Cartes "featured" */
+.featured-cards {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+}
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.card-image {
+  position: relative;
+  width: 100%;
+  height: 200px; /* Hauteur fixe pour la démo */
+  overflow: hidden;
+}
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-date {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(51, 51, 51, 0.8);
   color: #fff;
-  padding: 20px;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.6rem;
+}
+.card-content {
+  padding: 1rem;
+  flex: 1;
+}
+.card-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.card-content p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.card-button {
+  padding: 0.5rem 1rem;
+  background-color: #ffa500; /* orange style */
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
 }
 
-.footer-content {
+/* ------------------------------------------------------------------
+   5. FOOTER
+------------------------------------------------------------------ */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
   text-align: center;
 }
-
 .newsletter-form {
-  margin: 15px 0;
+  margin-top: 1rem;
+}
+.newsletter-form input {
+  padding: 0.3rem;
+}
+.newsletter-form button {
+  padding: 0.3rem 1rem;
+  margin-left: 0.3rem;
+  background-color: #ffe600;
+  border: none;
+  cursor: pointer;
+}
+.social-links a {
+  color: #ffe600;
+  text-decoration: none;
+  margin: 0 0.5rem;
 }
 
-.newsletter-form input[type="email"] {
-  padding: 5px;
-  margin-right: 10px;
+/* ------------------------------------------------------------------
+   6. FORMULAIRE DE CONNEXION (MON COMPTE)
+------------------------------------------------------------------ */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 1rem auto; /* pour centrer */
+}
+.login-form label {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+.login-form input {
+  margin-top: 0.3rem;
+  padding: 0.4rem;
+}
+.forgot-password {
+  margin: 0.5rem 0;
+}
+.login-button {
+  background-color: #ffa500;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+.login-button:hover {
+  background-color: #ff8c00;
 }
 
-.social-links {
-  margin-top: 10px;
+/* ------------------------------------------------------------------
+   7. PANIER (CART) : CENTRER LA PAGE PANIER
+------------------------------------------------------------------ */
+.cart-page {
+  max-width: 600px;    /* Largeur maxi du bloc panier */
+  margin: 2rem auto;   /* Centre horizontalement */
+  text-align: center;  /* Aligne le texte */
 }
 
-.product-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+.cart-page h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.product-item {
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
+.cart-page ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+/* ------------------------------------------------------------------
+   8. CATEGORIES GRID
+------------------------------------------------------------------ */
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 150px;
+}
+
+.category-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.category-card a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.category-card a:hover {
+  color: #ffa500;
 }

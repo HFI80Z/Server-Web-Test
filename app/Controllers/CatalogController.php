@@ -3,15 +3,14 @@
 namespace App\Controllers;
 
 use App\Models\Category;
-use App\Models\Brand;
 use App\Models\Product;
+use App\Models\Brand;
 use App\Models\Type;
 
 class CatalogController extends CoreController
 {
     public function category()
     {
-        // Récupération de la liste des catégories depuis le modèle Category
         $categories = Category::findAll();
 
         $this->show('category', [
@@ -21,9 +20,7 @@ class CatalogController extends CoreController
 
     public function brand()
     {
-        // Récupérer la liste des marques
         $brands = Brand::findAll();
-
         $this->show('brand', [
             'brands' => $brands
         ]);
@@ -31,21 +28,52 @@ class CatalogController extends CoreController
 
     public function product()
     {
-        // Pour la démonstration, on récupère tous les produits
         $products = Product::findAll();
-
         $this->show('product', [
             'products' => $products
         ]);
     }
 
+    /**
+     * Méthode qui affiche la page "Types de produits".
+     * On peut récupérer l'ID de la catégorie si besoin.
+     */
     public function type()
     {
-        // Récupération des types
-        $types = Type::findAll();
+        // Récupération éventuelle d'un "id" depuis l'URL (catégorie)
+        $categoryId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+
+        if ($categoryId) {
+            // Si tu souhaites faire un filtrage
+            // par exemple : $types = Type::findByCategory($categoryId);
+            // (il te faudrait implémenter findByCategory($id) dans Type.php)
+            
+            // Mais si tu n'en as pas besoin, tu ignores.
+            // Par exemple, on se contente d'afficher tous les types :
+            $types = Type::findAll();
+        } else {
+            // Pas de catégorie en paramètre, on affiche tous les types
+            $types = Type::findAll();
+        }
 
         $this->show('type', [
             'types' => $types
         ]);
+    }
+
+    /**
+     * Exemple : on conserve showProductsByCategory si tu en as encore l'usage
+     */
+    public function showProductsByCategory()
+    {
+        $categoryId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        if ($categoryId) {
+            $products = Product::findByCategory($categoryId);
+            $this->show('product-list', [
+                'products' => $products
+            ]);
+        } else {
+            echo "Catégorie introuvable ou ID manquant.";
+        }
     }
 }

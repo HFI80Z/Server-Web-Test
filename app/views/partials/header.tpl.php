@@ -9,19 +9,42 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-    <header>
-        <div class="topbar">
-            <h1>Dans les "Fournitures"</h1>
-            <p class="slogan">Tout pour la rentrée et plus encore</p>
+
+<header class="site-header">
+    <!-- Barre supérieure (logo, recherche, compte, panier) -->
+    <div class="header-top">
+        <!-- Logo -->
+        <div class="logo">
+            <!-- Remplacez l'URL de l'image selon vos besoins -->
+            <img src="/assets/images/logo2.jpeg" alt="Logo BIC">
         </div>
-        <nav class="main-nav">
-            <ul>
-                <!-- On utilise ?controller=... & method=... -->
-                <li><a href="?controller=main&method=home">Accueil</a></li>
-                <li><a href="?controller=catalog&method=category">Catégories</a></li>
-                <li><a href="?controller=catalog&method=type">Types de produits</a></li>
-                <li><a href="?controller=catalog&method=brand">Marques</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
+
+        <!-- Barre de recherche -->
+        <div class="search-bar">
+            <form action="#" method="get">
+                <input type="text" name="q" placeholder="Chercher">
+                <button type="submit">🔍</button>
+            </form>
+        </div>
+
+        <!-- Liens compte & panier -->
+        <div class="header-actions">
+            <!-- Renvoie vers UserController::login() -->
+            <a href="?controller=user&method=login">Mon compte</a>
+            <!-- Renvoie vers CartController::showCart() -->
+            <a href="?controller=cart&method=showCart">Mon Panier</a>
+        </div>
+    </div>
+
+    <!-- Barre de navigation principale -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="?controller=main&method=home">Accueil</a></li>
+            <li><a href="?controller=catalog&method=category">Catégories</a></li>
+            <li><a href="?controller=catalog&method=type">Types de produits</a></li>
+            <li><a href="?controller=catalog&method=brand">Marques</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
