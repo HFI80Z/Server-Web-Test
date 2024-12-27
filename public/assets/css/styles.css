@@ -1,6 +1,3 @@
-/* ------------------------------------------------------------------
-   0. STICKY FOOTER
------------------------------------------------------------------- */
 html, body {
   height: 100%;
   margin: 0;
@@ -17,9 +14,6 @@ main {
   flex: 1 0 auto;
 }
 
-/* ------------------------------------------------------------------
-   1. RESET ET STYLE GLOBAL
------------------------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -32,21 +26,16 @@ body {
   color: #333;
 }
 
-/* Icônes basiques (ex: 🛒 / 👤) */
 .cart-icon,
 .user-icon {
   margin-right: 0.5rem;
 }
 
-/* ------------------------------------------------------------------
-   2. HEADER (LOGO, RECHERCHE, COMPTE, PANIER)
------------------------------------------------------------------- */
 .site-header {
   background-color: #fff;
   border-bottom: 1px solid #ccc;
 }
 
-/* Barre du haut (logo, recherche, compte, panier) */
 .header-top {
   display: flex;
   align-items: center;
@@ -58,7 +47,6 @@ body {
   max-height: 50px;
 }
 
-/* Barre de recherche */
 .search-bar form {
   display: flex;
   align-items: center;
@@ -75,7 +63,6 @@ body {
   padding: 0.3rem 0.6rem;
 }
 
-/* Liens compte/panier */
 .header-actions a {
   margin-left: 1rem;
   text-decoration: none;
@@ -83,11 +70,8 @@ body {
   font-weight: bold;
 }
 
-/* ------------------------------------------------------------------
-   3. NAVIGATION PRINCIPALE
------------------------------------------------------------------- */
 .main-nav {
-  background-color: #ffe600; /* Jaune Bic */
+  background-color: #ffe600; 
   padding: 0.5rem 1rem;
   display: flex;
 }
@@ -103,9 +87,6 @@ body {
   font-weight: bold;
 }
 
-/* ------------------------------------------------------------------
-   4. PAGE D'ACCUEIL : BANNIÈRE + CARTES
------------------------------------------------------------------- */
 .home-banner {
   text-align: center;
   background-color: #ffe600;
@@ -120,7 +101,6 @@ body {
   font-size: 1.1rem;
 }
 
-/* Cartes "featured" (ex : page d'accueil) */
 .featured-cards {
   display: flex;
   justify-content: center;
@@ -180,9 +160,6 @@ body {
   border-radius: 4px;
 }
 
-/* ------------------------------------------------------------------
-   5. FOOTER
------------------------------------------------------------------- */
 footer {
   background-color: #333;
   color: #fff;
@@ -208,9 +185,6 @@ footer {
   margin: 0 0.5rem;
 }
 
-/* ------------------------------------------------------------------
-   6. FORMULAIRE DE CONNEXION (MON COMPTE)
------------------------------------------------------------------- */
 .login-form {
   display: flex;
   flex-direction: column;
@@ -242,9 +216,6 @@ footer {
   background-color: #ff8c00;
 }
 
-/* ------------------------------------------------------------------
-   7. PANIER (CART) : AMÉLIORATION DE LA PAGE PANIER
------------------------------------------------------------------- */
 .cart-page {
   max-width: 800px;
   margin: 2rem auto;
@@ -308,7 +279,7 @@ footer {
 }
 
 .clear-cart-button {
-  background-color: #ff4d4d; /* Rouge pour vider le panier */
+  background-color: #ff4d4d; 
   color: #fff;
 }
 
@@ -318,7 +289,7 @@ footer {
 }
 
 .continue-shopping-button {
-  background-color: #ffa500; /* Orange pour continuer les achats */
+  background-color: #ffa500; 
   color: #fff;
 }
 
@@ -327,10 +298,7 @@ footer {
   transform: translateY(-2px);
 }
 
-/* ------------------------------------------------------------------
-   8. CATEGORIES GRID
------------------------------------------------------------------- */
-/* (si besoin pour category.tpl.php) */
+
 .category-grid {
   display: flex;
   justify-content: center;
@@ -358,9 +326,6 @@ footer {
   color: #000;
 }
 
-/* ------------------------------------------------------------------
-   9. PRODUCT GRID (PAGE type.tpl.php)
------------------------------------------------------------------- */
 .product-grid {
   display: flex;
   flex-wrap: wrap;
@@ -380,7 +345,7 @@ footer {
   flex-direction: column;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   text-align: left;
-  align-items: center; /* centrer l'image */
+  align-items: center; 
 }
 
 .product-card img {
@@ -419,7 +384,7 @@ footer {
 
 .add-to-cart-button {
   display: inline-block;
-  background-color: #008000; /* Vert */
+  background-color: #008000; 
   color: #fff;
   text-decoration: none;
   padding: 0.6rem 1.2rem;
@@ -432,9 +397,6 @@ footer {
   background-color: #006600;
 }
 
-/* ------------------------------------------------------------------
-   10. RESPONSIVITÉ DE LA PAGE PANIER
------------------------------------------------------------------- */
 @media (max-width: 768px) {
   .cart-page {
     padding: 1.5rem;

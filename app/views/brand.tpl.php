@@ -1,5 +1,4 @@
 <?php
-// app/Views/brand.tpl.php
 ?>
 <h2>Liste des marques</h2>
 <ul>

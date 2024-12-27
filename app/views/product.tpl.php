@@ -1,5 +1,4 @@
 <?php
-// app/Views/product.tpl.php
 ?>
 <h2>Liste des produits</h2>
 <div class="product-list">

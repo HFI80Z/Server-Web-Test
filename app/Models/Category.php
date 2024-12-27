@@ -1,5 +1,4 @@
 <?php
-// app/Models/Category.php
 namespace App\Models;
 
 use App\Utils\Database;
@@ -9,9 +8,6 @@ class Category extends CoreModel
 {
     private $name;
 
-    /**
-     * Récupérer toutes les catégories
-     */
     public static function findAll()
     {
         $pdo = Database::getPDO();
@@ -21,9 +17,6 @@ class Category extends CoreModel
         return $results;
     }
 
-    /**
-     * Récupérer une catégorie par son id
-     */
     public static function find($id)
     {
         $pdo = Database::getPDO();
@@ -35,7 +28,6 @@ class Category extends CoreModel
         return $statement->fetch();
     }
 
-    // Getter / Setter
     public function getName()
     {
         return $this->name;

@@ -1,5 +1,4 @@
 <?php
-// app/Views/login.tpl.php
 ?>
 <h1><span class="user-icon">👤</span> Je m'identifie</h1>
 

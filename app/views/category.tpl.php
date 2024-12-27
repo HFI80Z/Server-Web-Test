@@ -1,9 +1,7 @@
 <?php
-// app/Views/category.tpl.php
 ?>
 <h2>Nos catégories</h2>
 
-<!-- Première ligne : 3 catégories -->
 <div class="category-grid">
     <div class="category-card">
         <a href="?controller=catalog&method=type">
@@ -27,7 +25,6 @@
     </div>
 </div>
 
-<!-- Deuxième ligne : 2 catégories -->
 <div class="category-grid">
     <div class="category-card">
         <a href="?controller=catalog&method=type">

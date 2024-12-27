@@ -1,5 +1,4 @@
 <?php
-// app/Views/partials/footer.tpl.php
 ?>
 </main>
 

@@ -1,5 +1,4 @@
 <?php
-// app/Views/cart.tpl.php
 ?>
 <h1><i class="cart-icon">🛒</i> Mon Panier</h1>
 

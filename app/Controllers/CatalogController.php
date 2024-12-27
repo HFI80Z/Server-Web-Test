@@ -1,5 +1,4 @@
 <?php
-// app/Controllers/CatalogController.php
 namespace App\Controllers;
 
 use App\Models\Category;
@@ -34,25 +33,15 @@ class CatalogController extends CoreController
         ]);
     }
 
-    /**
-     * Méthode qui affiche la page "Types de produits".
-     * On peut récupérer l'ID de la catégorie si besoin.
-     */
     public function type()
     {
-        // Récupération éventuelle d'un "id" depuis l'URL (catégorie)
+        
         $categoryId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
         if ($categoryId) {
-            // Si tu souhaites faire un filtrage
-            // par exemple : $types = Type::findByCategory($categoryId);
-            // (il te faudrait implémenter findByCategory($id) dans Type.php)
-            
-            // Mais si tu n'en as pas besoin, tu ignores.
-            // Par exemple, on se contente d'afficher tous les types :
+
             $types = Type::findAll();
         } else {
-            // Pas de catégorie en paramètre, on affiche tous les types
             $types = Type::findAll();
         }
 
@@ -61,9 +50,6 @@ class CatalogController extends CoreController
         ]);
     }
 
-    /**
-     * Exemple : on conserve showProductsByCategory si tu en as encore l'usage
-     */
     public function showProductsByCategory()
     {
         $categoryId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);

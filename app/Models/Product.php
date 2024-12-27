@@ -1,5 +1,4 @@
 <?php
-// app/Models/Product.php
 namespace App\Models;
 
 use App\Utils\Database;
@@ -15,9 +14,6 @@ class Product extends CoreModel
     protected $type_id;
     protected $category_id;
 
-    /**
-     * Récupère tous les produits
-     */
     public static function findAll()
     {
         $pdo = Database::getPDO();
@@ -27,9 +23,6 @@ class Product extends CoreModel
         return $results;
     }
 
-    /**
-     * Récupère un produit par son id
-     */
     public static function find($id)
     {
         $pdo = Database::getPDO();
@@ -41,9 +34,6 @@ class Product extends CoreModel
         return $statement->fetch();
     }
 
-    /**
-     * Récupère tous les produits d'une même catégorie
-     */
     public static function findByCategory($categoryId)
     {
         $pdo = Database::getPDO();
@@ -55,7 +45,7 @@ class Product extends CoreModel
         return $results;
     }
 
-    // Getters
+
     public function getId()          { return $this->id; }
     public function getName()        { return $this->name; }
     public function getDescription() { return $this->description; }
@@ -64,7 +54,6 @@ class Product extends CoreModel
     public function getTypeId()      { return $this->type_id; }
     public function getCategoryId()  { return $this->category_id; }
 
-    // Setters (si nécessaire)
     public function setName($name)        { $this->name = $name; }
     public function setDescription($desc) { $this->description = $desc; }
     public function setPrice($price)      { $this->price = $price; }

@@ -1,5 +1,4 @@
 <?php
-// app/Models/CoreModel.php
 namespace App\Models;
 
 abstract class CoreModel
@@ -8,7 +7,6 @@ abstract class CoreModel
     protected $created_at;
     protected $updated_at;
 
-    // Getters / Setters
     public function getId()
     {
         return $this->id;
